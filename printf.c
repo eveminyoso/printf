@@ -23,14 +23,14 @@ int _printf(const char *format, ...)
 				len += printf_char(va_arg(args, int));
 				break;
 			case '%':
-				len += printf_37();
+				len += printf();
 				break;
 			case 'i':
 			case 'd':
-				len += printf_int(va_arg(args, int));
+				len += printf_integer(va_arg(args, int));
 				break;
 			case 'r':
-				len += printf_srev(va_arg(args, char *));
+				len += printf_reverse(va_arg(args, char *));
 				break;
 			default:
 				_putchar('%');
