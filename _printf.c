@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 	int i, c, count = 0;
 	va_list valist;
 	char *s;
-	unsigned int num;
+	unsigned int num, num1, num2, num3;
 
 	va_start(valist, format);
 	if (!format)
@@ -48,13 +48,22 @@ int _printf(const char *format, ...)
 			{
 				num = va_arg(valist, unsigned int);
 				count += print_bi(num);
-			else
-			{
-				putchar('%');
-				putchar(format[i]);
-				count += 2;
 			}
-		}
+			else if (format[i] == 'o')
+			{
+				num1 = va_arg(valist, unsigned int);
+				count += print_octal(num1);
+			}
+			else if (format[i] == 'x')
+			{
+				num2 = va_arg(valist, unsigned int);
+				count += print_hexalow(num2);
+			}
+			else if (format[i] == 'X')
+			{
+				num3 = va_arg(valist, unsigned int);
+				count += print_hexaup(num3);
+			}
 		else
 		{
 			putchar('%');
