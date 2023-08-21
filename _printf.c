@@ -54,13 +54,6 @@ int _printf(const char *format, ...)
 				num = va_arg(valist, unsigned int);
 				count += print_bi(num);
 			}
-			else
-			{
-				putchar('%');
-				putchar(format[i]);
-				count += 2;
-			}
-		}
 		else
 		{
 			putchar('%');
