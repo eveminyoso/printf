@@ -15,7 +15,9 @@ int _printf(const char *format, ...)
 
 	va_start(valist, format);
 	if (!format)
+	{
 		return (-1);
+	}
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] != '%')
@@ -70,13 +72,18 @@ int _printf(const char *format, ...)
 			{
 				count += print_hexaup(num);
 			}
+			else
+			{
+				putchar('%');
+				return (-1);
+			}
+		}
 		else
 		{
 			putchar('%');
 			return (-1);
 		}
 	}
-
 	va_end(valist);
 	return (count);
 }

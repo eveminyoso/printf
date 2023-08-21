@@ -9,7 +9,7 @@ int print_unsig(unsigned int n)
 {
 	int i, count = 0;
 	unsigned int num_copy = n;
-	char buffer[];
+	char buffer[32];
 
 	if (n == 0)
 	{
@@ -23,8 +23,6 @@ int print_unsig(unsigned int n)
 			num_copy = num_copy / 10;
 			count++;
 		}
-
-		buffer[count];
 		for (i = count - 1; i >= 0; i--)
 		{
 			buffer[i] = n % 10 + '0';
