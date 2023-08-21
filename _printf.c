@@ -72,6 +72,10 @@ int _printf(const char *format, ...)
 			{
 				count += print_hexaup(num);
 			}
+			else if (format[i] == 'S')
+			{
+				count += print_bigS(s);
+			}
 			else
 			{
 				putchar('%');

@@ -20,5 +20,6 @@ int _printstring(char *s);
 int rot13(char *point);
 int print_rev(char *);
 int print_hl(uintptr_t n);
+int print_bigS(va_list l, flags_t *f);
 int main(void);
 #endif
