@@ -8,7 +8,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, c, num, count = 0;
+	int i, c, count = 0;
 	va_list valist;
 	char *s;
 	unsigned int num;
@@ -53,6 +53,7 @@ int _printf(const char *format, ...)
 			{
 				num = va_arg(valist, unsigned int);
 				count += print_bi(num);
+			}
 			else
 			{
 				putchar('%');
