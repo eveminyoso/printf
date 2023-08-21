@@ -8,7 +8,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, c, count = 0;
+	int i, c, num, count = 0;
 	va_list valist;
 	char *s;
 
@@ -38,6 +38,11 @@ int _printf(const char *format, ...)
 				if (!s)
 					s = "(null)";
 				count += _printstring(s);
+			}
+			else if (format[i] == 'd' || format[i] == 'i')
+			{
+				num = va_arg(valist, int);
+				count += print_number(num);
 			}
 			else if (format[i] == '%')
 			{
