@@ -24,8 +24,7 @@ int print_unsig(unsigned int n)
 			count++;
 		}
 
-		buffer[count]; /* Buffer to store the digits in reverse order*/
-
+		buffer[count];
 		for (i = count - 1; i >= 0; i--)
 		{
 			buffer[i] = n % 10 + '0';
