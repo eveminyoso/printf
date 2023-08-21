@@ -53,6 +53,21 @@ int _printf(const char *format, ...)
 			{
 				num = va_arg(valist, unsigned int);
 				count += print_bi(num);
+<<<<<<< HEAD
+=======
+			}
+			else if (format[i] == 'o')
+			{
+				count += print_octal(num);
+			}
+			else if (format[i] == 'x')
+			{
+				count += print_hexalow(num);
+			}
+			else if (format[i] == 'X')
+			{
+				count += print_hexaup(num);
+>>>>>>> print
 			}
 		else
 		{
