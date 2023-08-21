@@ -11,7 +11,10 @@ int _printf(const char *format, ...)
 	int i, c, count = 0;
 	va_list valist;
 	char *s;
-	unsigned int num, num1, num2, num3;
+	unsigned int num;
+	unsigned int nb;
+	unsigned int ac;
+	unsigned int kt;
 
 	va_start(valist, format);
 	if (!format)
@@ -51,18 +54,18 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == 'o')
 			{
-				num1 = va_arg(valist, unsigned int);
-				count += print_octal(num1);
+				nb = va_arg(valist, unsigned int);
+				count += print_octal(nb);
 			}
 			else if (format[i] == 'x')
 			{
-				num2 = va_arg(valist, unsigned int);
-				count += print_hexalow(num2);
+				ac = va_arg(valist, unsigned int);
+				count += print_hexalow(ac);
 			}
 			else if (format[i] == 'X')
 			{
-				num3 = va_arg(valist, unsigned int);
-				count += print_hexaup(num3);
+				kt = va_arg(valist, unsigned int);
+				count += print_hexaup(kt);
 			}
 		else
 		{
