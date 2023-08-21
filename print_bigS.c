@@ -8,7 +8,7 @@
  * if a flag is passed to _printf
  * Return: Number of characters printed
  */
-int print_bigS(va_list l, flags_t *f)
+int print_bigS(va_list l)
 {
 	int i, count = 0;
 	char *s = va_arg(l, char *);
