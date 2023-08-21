@@ -11,6 +11,7 @@ int _printf(const char *format, ...)
 	int i, c, num, count = 0;
 	va_list valist;
 	char *s;
+	unsigned int num;
 
 	va_start(valist, format);
 
@@ -49,6 +50,10 @@ int _printf(const char *format, ...)
 				putchar('%');
 				count++;
 			}
+			else if (format[i] == 'b')
+			{
+				num = va_arg(valist, unsigned int);
+				count += print_bi(num);
 			else
 			{
 				putchar('%');
