@@ -7,33 +7,26 @@
  */
 int print_unsig(unsigned int n)
 {
-	int i, count = 0;
-	unsigned int num_copy = n;
-	char buffer[];
-
+	char buffer[12]; /* Max length of unsigned int in decimal + 1 */
+	int count = 0;
+	int i, index = 0;
+	
 	if (n == 0)
 	{
 		putchar('0');
-		count = 1;
+		return (1);
 	}
-	else
-	{
-		while (num_copy != 0)
-		{
-			num_copy = num_copy / 10;
-			count++;
-		}
-		buffer[count]; /*Buffer to store the digits in reverse order*/
-		for (i = count - 1; i >= 0; i--)
-		{
-			buffer[i] = n % 10 + '0';
-			n = n / 10;
-		}
 
-		for (i = 0; i < count; i++)
-		{
-			putchar(buffer[i]);
-		}
+	while (n > 0)
+	{
+		buffer[index++] = (n % 10) + '0';
+		n /= 10;
+		count++;
+	}
+
+	for (i = index - 1; i >= 0; i--)
+	{
+		putchar(buffer[i]);
 	}
 
 	return (count);
