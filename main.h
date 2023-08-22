@@ -18,7 +18,7 @@ int print_hexalow(unsigned int n);
 int print_bi(unsigned int n);
 int _printstring(char *s);
 int rot13(char *point);
-int print_rev(char *);
+int print_rev(char *s);
 int print_hl(uintptr_t n);
 int print_bigS(char *);
 int main(void);
