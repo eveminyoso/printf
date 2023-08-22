@@ -1,36 +1,31 @@
 #include "main.h"
-
 /**
- * print_octal - Print numbers in base 8 (octal)
- * @n: Number to print
- * Return: Number of characters printed
+ * print_octal - prints to base 8
+ * @n: number
+ * Return: total count
  */
 int print_octal(unsigned int n)
 {
-	int index, i, count = 0;
-	char octal[32];
+	int i, count = 0;
+	unsigned int num_copy = n;
+	char buffer[12]; /* Max length of unsigned int in octal + 1*/
 
 	if (n == 0)
 	{
 		putchar('0');
+		return (1);
+	}
+	i = 0;
+	while (num_copy != 0)
+	{
+		buffer[i] = num_copy % 8 + '0';
+		num_copy /= 8;
+		i++;
 		count++;
 	}
-	else
+	for (i = i - 1; i >= 0; i--)
 	{
-
-		while (n > 0)
-		{
-			octal[index] = n % 8 + '0';
-			n /= 8;
-			index++;
-		}
-
-		for (i = index - 1; i >= 0; i--)
-		{
-			putchar(octal[i]);
-			count++;
-		}
+		putchar(buffer[i]);
 	}
-
 	return (count);
 }

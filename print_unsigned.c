@@ -9,7 +9,7 @@ int print_unsig(unsigned int n)
 {
 	int i, count = 0;
 	unsigned int num_copy = n;
-	char buffer[32];
+	char buffer[12]; /* Max length of unsigned int in decimal + 1*/
 
 	if (n == 0)
 	{
@@ -18,22 +18,18 @@ int print_unsig(unsigned int n)
 	}
 	else
 	{
+		i = 0;
 		while (num_copy != 0)
 		{
-			num_copy = num_copy / 10;
+			buffer[i] = num_copy % 10 + '0';
+			num_copy /= 10;
+			i++;
 			count++;
 		}
-		for (i = count - 1; i >= 0; i--)
-		{
-			buffer[i] = n % 10 + '0';
-			n = n / 10;
-		}
-
-		for (i = 0; i < count; i++)
+		for (i = i - 1; i >= 0; i--)
 		{
 			putchar(buffer[i]);
 		}
 	}
-
 	return (count);
 }

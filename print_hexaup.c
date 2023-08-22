@@ -7,29 +7,34 @@
  */
 int print_hexaup(unsigned int n)
 {
-	int i, index = 0, count = 0;
-	char hex_digits[] = "0123456789ABCDEF", hex[32];
+	int temp, i, count = 0;
+	unsigned int num_copy = n;
+	char buffer[12];
 
 	if (n == 0)
 	{
 		putchar('0');
-		count++;
+		return (1);
 	}
-	else
+	i = 0;
+	while (num_copy != 0)
 	{
-		while (n > 0)
+		temp = num_copy % 16;
+		if (temp < 10)
 		{
-			hex[index] = hex_digits[n % 16];
-			n /= 16;
-			index++;
+			buffer[i] = temp + '0';
 		}
-
-		for (i = index - 1; i >= 0; i--)
+		else
 		{
-			putchar(hex[i]);
-			count++;
+			buffer[i] = temp - 10 + 'A';
 		}
+	num_copy /= 16;
+	i++;
+	count++;
 	}
-
+	for (i = i - 1; i >= 0; i--)
+	{
+		putchar(buffer[i]);
+	}
 	return (count);
 }
