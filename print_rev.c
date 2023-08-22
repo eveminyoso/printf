@@ -6,7 +6,7 @@
  */
 int print_rev(char *s)
 {
-	char *z = str;
+	char *z = s;
 	int i;
 	int count1 = 0;
 	int count = 0;
