@@ -9,7 +9,7 @@ int print_unsig(unsigned int n)
 {
 	int i, count = 0;
 	unsigned int num_copy = n;
-	char buffer[];
+	char buffer[12];
 
 	if (n == 0)
 	{
