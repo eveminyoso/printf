@@ -59,18 +59,22 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == 'u')
 			{
+				num = va_arg(valist, unsigned int);
 				count += print_unsig(num);
 			}
 			else if (format[i] == 'o')
 			{
+				num = va_arg(valist, unsigned int);
 				count += print_octal(num);
 			}
 			else if (format[i] == 'x')
 			{
+				num = va_arg(valist, unsigned int);
 				count += print_hexalow(num);
 			}
 			else if (format[i] == 'X')
 			{
+				num = va_arg(valist, unsigned int);
 				count += print_hexaup(num);
 			}
 			else if (format[i] == 'S')
