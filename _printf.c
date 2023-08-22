@@ -76,6 +76,11 @@ int _printf(const char *format, ...)
 			{
 				count += print_bigS(s);
 			}
+			else if (format[i] == 'p')
+			{
+				pointer = va_arg(valist, void *);
+				count += putchar('0') + putchar('x');
+				count += print_hl((uintptr_t)pointer);
 			else
 			{
 				putchar('%');
