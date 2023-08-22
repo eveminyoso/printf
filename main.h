@@ -20,13 +20,7 @@ int _printstring(char *s);
 int rot13(char *point);
 int print_rev(char *s);
 int print_hl(uintptr_t n);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> print
-=======
 int print_bigS(char *);
->>>>>>> print
 int main(void);
 
 
