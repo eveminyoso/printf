@@ -21,8 +21,11 @@ int rot13(char *point);
 int print_rev(char *);
 int print_hl(uintptr_t n);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
-int print_bigS(va_list l, char *);
+>>>>>>> print
+=======
+int print_bigS(char *);
 >>>>>>> print
 int main(void);
 

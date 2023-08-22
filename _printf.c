@@ -11,6 +11,7 @@ int _printf(const char *format, ...)
 	int i, c, count = 0;
 	va_list valist;
 	char *s;
+	void *pointer;
 	unsigned int num;
 
 	va_start(valist, format);
@@ -81,6 +82,7 @@ int _printf(const char *format, ...)
 				pointer = va_arg(valist, void *);
 				count += putchar('0') + putchar('x');
 				count += print_hl((uintptr_t)pointer);
+			}
 			else
 			{
 				putchar('%');

@@ -9,12 +9,17 @@
  * Return: Number of characters printed
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
-int print_bigS(va_list l, char *)
+int print_bigS(char *)
+>>>>>>> print
+=======
+int print_bigS(char *)
 >>>>>>> print
 {
 	int i, count = 0;
 	char *s;
+	va_list l;
 
 	s = va_arg(l, char *);
 
