@@ -20,10 +20,9 @@ int print_hexalow(unsigned int n)
 	while (num_copy != 0)
 	{
 		temp = num_copy % 16;
-		if
+		if (temp < 10)
 		{
-			(temp < 10)
-		buffer[i] = temp + '0';
+			buffer[i] = temp + '0';
 		}
 		else
 		{
