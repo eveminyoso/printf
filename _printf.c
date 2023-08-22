@@ -83,6 +83,14 @@ int _printf(const char *format, ...)
 				count += putchar('0') + putchar('x');
 				count += print_hl((uintptr_t)pointer);
 			}
+			else if (format[i] == 'r')
+			{
+				if (!s)
+				{
+					s = "(null)";
+				}
+				count += print_rev(s);
+			}
 			else
 			{
 				putchar('%');
