@@ -91,6 +91,18 @@ int _printf(const char *format, ...)
 				}
 				count += print_rev(s);
 			}
+			else if (format[i] == 'S')
+			{
+				s = va_arg(valist, char *);
+				if (!s)
+					s = "(null)";
+				count += print_S(s);
+			}
+			else
+			{
+				_putchar('%');
+				return (-1);
+			}
 		}
 		else
 		{

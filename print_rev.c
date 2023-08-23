@@ -19,6 +19,6 @@ int print_rev(char *s)
 		putchar(s[j]);
 		count++;
 	}
-
+	
 	return (count);
 }

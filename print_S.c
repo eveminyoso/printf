@@ -22,6 +22,5 @@ int print_S(char *s)
 			count += putchar(s[i]);
 		}
 	}
-
 	return (count);
 }
