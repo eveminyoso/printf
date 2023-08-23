@@ -11,7 +11,6 @@ int _printf(const char *format, ...)
 	int i, c, count = 0;
 	va_list valist;
 	char *s;
-	void *pointer;
 	unsigned int num;
 
 	va_start(valist, format);
@@ -23,7 +22,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			putchar(format[i]);
+			_putchar(format[i]);
 			count++;
 		}
 		else if (format[i + 1])
@@ -32,7 +31,7 @@ int _printf(const char *format, ...)
 			if (format[i] == 'c')
 			{
 				c = va_arg(valist, int);
-				putchar(c);
+				_putchar(c);
 				count++;
 			}
 			else if (format[i] == 's')
@@ -42,6 +41,13 @@ int _printf(const char *format, ...)
 					s = "(null)";
 				count += _printstring(s);
 			}
+			if (format[i] == 'S')
+			{
+				s = va_arg(valist, char *);
+				if (!s)
+				s = "(null)";
+				count += print_S(s);
+			}
 			else if (format[i] == 'd' || format[i] == 'i')
 			{
 				num = va_arg(valist, int);
@@ -49,7 +55,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == '%')
 			{
-				putchar('%');
+				_putchar('%');
 				count++;
 			}
 			else if (format[i] == 'b')
@@ -77,16 +83,6 @@ int _printf(const char *format, ...)
 				num = va_arg(valist, unsigned int);
 				count += print_hexaup(num);
 			}
-			else if (format[i] == 'S')
-			{
-				count += print_bigS(s);
-			}
-			else if (format[i] == 'p')
-			{
-				pointer = va_arg(valist, void *);
-				count += putchar('0') + putchar('x');
-				count += print_hl((uintptr_t)pointer);
-			}
 			else if (format[i] == 'r')
 			{
 				if (!s)
@@ -95,15 +91,10 @@ int _printf(const char *format, ...)
 				}
 				count += print_rev(s);
 			}
-			else
-			{
-				putchar('%');
-				return (-1);
-			}
 		}
 		else
 		{
-			putchar('%');
+			_putchar('%');
 			return (-1);
 		}
 	}
