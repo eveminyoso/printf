@@ -7,6 +7,7 @@
 #include <stddef.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdint.h>
 
 int _putchar(char c);
 int print_number(int n);
@@ -19,8 +20,8 @@ int print_bi(unsigned int n);
 int _printstring(char *s);
 int rot13(char *point);
 int print_rev(char *s);
-int print_hl(uintptr_t n);
-int print_bigS(char *);
+int print_hl(unsigned int n);
+int print_S(char *s);
 int main(void);
 
 
