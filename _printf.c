@@ -34,14 +34,14 @@ int _printf(const char *format, ...)
 				_putchar(c);
 				count++;
 			}
-			else if (format[i] == 's')
+			if (format[i] == 's')
 			{
 				s = va_arg(valist, char *);
 				if (!s)
 					s = "(null)";
 				count += _printstring(s);
 			}
-			if (format[i] == 'S')
+			else if (format[i] == 'S')
 			{
 				s = va_arg(valist, char *);
 				if (!s)
