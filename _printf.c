@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			putchar(format[i]);
+			_putchar(format[i]);
 			count++;
 		}
 		else if (format[i + 1])
@@ -31,78 +31,87 @@ int _printf(const char *format, ...)
 			if (format[i] == 'c')
 			{
 				c = va_arg(valist, int);
-				putchar(c);
+				_putchar(c);
 				count++;
 			}
-			else if (format[i] == 's')
-			{
-				s = va_arg(valist, char *);
-				if (!s)
-					s = "(null)";
-				count += _printstring(s);
-			}
-			else if (format[i] == 'd' || format[i] == 'i')
-			{
-				num = va_arg(valist, int);
-				count += print_number(num);
-			}
-			else if (format[i] == '%')
-			{
-				putchar('%');
-				count++;
-			}
-			else if (format[i] == 'b')
-			{
-				num = va_arg(valist, unsigned int);
-				count += print_bi(num);
-			}
-			else if (format[i] == 'u')
-			{
-				num = va_arg(valist, unsigned int);
-				count += print_unsig(num);
-			}
-			else if (format[i] == 'o')
-			{
-				num = va_arg(valist, unsigned int);
-				count += print_octal(num);
-			}
-			else if (format[i] == 'x')
-			{
-				num = va_arg(valist, unsigned int);
-				count += print_hexalow(num);
-			}
-			else if (format[i] == 'X')
-			{
-				num = va_arg(valist, unsigned int);
-				count += print_hexaup(num);
-			}
-			else if (format[i] == 'r')
-			{
-				if (!s)
+				else if (format[i] == 's')
 				{
-					s = "(null)";
+					s = va_arg(valist, char *);
+					if (!s)
+						s = "(null)";
+					count += _printstring(s);
 				}
-				count += print_rev(s);
-			}
-			else if (format[i] == 'S')
-			{
-				s = va_arg(valist, char *);
-				if (!s)
-					s = "(null)";
-				count += print_S(s);
+				else if (format[i] == 'S')
+				{
+					s = va_arg(valist, char *);
+					if (!s)
+						s = "(null)";
+					count += print_S(s);
+				}
+				else if (format[i] == 'd' || format[i] == 'i')
+				{
+					num = va_arg(valist, int);
+					count += print_number(num);
+				}
+				else if (format[i] == '%')
+				{
+					_putchar('%');
+					count++;
+				}
+				else if (format[i] == 'b')
+				{
+					num = va_arg(valist, unsigned int);
+					count += print_bi(num);
+				}
+				else if (format[i] == 'u')
+				{
+					num = va_arg(valist, unsigned int);
+					count += print_unsig(num);
+				}
+				else if (format[i] == 'o')
+				{
+					num = va_arg(valist, unsigned int);
+					count += print_octal(num);
+				}
+				else if (format[i] == 'x')
+				{
+					num = va_arg(valist, unsigned int);
+					count += print_hexalow(num);
+				}
+				else if (format[i] == 'X')
+				{
+					num = va_arg(valist, unsigned int);
+					count += print_hexaup(num);
+				}
+				else if (format[i] == 'r')
+				{
+					_putchar('%');
+					_putchar('r');
+					count += 2;
+				}
+				else if (format[i] == 'S')
+				{
+					s = va_arg(valist, char *);
+					if (!s)
+						s = "(null)";
+					count += print_S(s);
+				}
+				else if (format[i] == 'p')
+				{
+					count += print_pointer(valist);
+				}
+				else
+				{
+					_putchar('%');
+					return (-1);
+				}
 			}
 			else
 			{
-				putchar('%');
+				_putchar('%');
 				return (-1);
 			}
 		}
-		else
-		{
-			putchar('%');
-			return (-1);
-		}
-	}
-	va_end(valist);
-	return (count);
+		va_end(valist);
+		return (count);
 }

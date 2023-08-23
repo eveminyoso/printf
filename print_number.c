@@ -12,12 +12,12 @@ int print_number(int n)
 
 	if (n < 0)
 	{
-		putchar('-');
+		_putchar('-');
 		count++;
 	}
 	else if (n == 0)
 	{
-		putchar('0');
+		_putchar('0');
 		count++;
 	}
 	i = 0;
@@ -31,7 +31,7 @@ int print_number(int n)
 	/*Print the digits in reverse order*/
 	for (i = i - 1; i >= 0; i--)
 	{
-		putchar(buffer[i]);
+		_putchar(buffer[i]);
 		count++;
 	}
 

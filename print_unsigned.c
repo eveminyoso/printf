@@ -10,10 +10,10 @@ int print_unsig(unsigned int n)
 	char buffer[12]; /* Max length of unsigned int in decimal + 1 */
 	int count = 0;
 	int i, index = 0;
-	
+
 	if (n == 0)
 	{
-		putchar('0');
+		_putchar('0');
 		return (1);
 	}
 
@@ -26,7 +26,7 @@ int print_unsig(unsigned int n)
 
 	for (i = index - 1; i >= 0; i--)
 	{
-		putchar(buffer[i]);
+		_putchar(buffer[i]);
 	}
 
 	return (count);
