@@ -85,11 +85,9 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == 'r')
 			{
-				if (!s)
-				{
-					s = "(null)";
-				}
-				count += print_rev(s);
+				_putchar('%');
+				_putchar('r');
+				count += 2;
 			}
 			else if (format[i] == 'S')
 			{
