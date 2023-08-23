@@ -34,7 +34,7 @@ int _printf(const char *format, ...)
 				_putchar(c);
 				count++;
 			}
-			if (format[i] == 's')
+			else if (format[i] == 's')
 			{
 				s = va_arg(valist, char *);
 				if (!s)
