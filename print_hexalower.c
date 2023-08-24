@@ -13,7 +13,7 @@ int print_hexalow(unsigned int n)
 
 	if (n == 0)
 	{
-		putchar('0');
+		_putchar('0');
 		return (1);
 	}
 	i = 0;
@@ -34,7 +34,7 @@ int print_hexalow(unsigned int n)
 	}
 	for (i = i - 1; i >= 0; i--)
 	{
-		putchar(buffer[i]);
+		_putchar(buffer[i]);
 	}
 	return (count);
 }

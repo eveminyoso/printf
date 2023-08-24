@@ -11,7 +11,7 @@ int print_bi(unsigned int n)
 
 	if (n == 0)
 	{
-		putchar('0');
+		_putchar('0');
 		count++;
 	}
 	else
@@ -26,7 +26,7 @@ int print_bi(unsigned int n)
 
 		for (i = index - 1; i >= 0; i--)
 		{
-			putchar(binary[i] + '0');
+			_putchar(binary[i] + '0');
 			count++;
 		}
 	}

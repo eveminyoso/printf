@@ -4,14 +4,14 @@
  * @n: Unsigned int
  * Return: Number of characters printed
  */
-int print_hl(uintptr_t n)
+int print_hl(unsigned int n)
 {
 	char hexadecimalNumber[100];
 	int j, temp, i = 0, count = 0;
 
 	if (n == 0)
 	{
-		putchar('0');
+		_putchar('0');
 		return (1);
 	}
 	while (n != 0)
@@ -31,7 +31,7 @@ int print_hl(uintptr_t n)
 
 	for (j = i - 1; j >= 0; j--, count++)
 	{
-		putchar(hexadecimalNumber[j]);
+		_putchar(hexadecimalNumber[j]);
 	}
 	return (count);
 }
