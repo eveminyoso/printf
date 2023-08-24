@@ -1,117 +1,65 @@
 #include "main.h"
 
+void print_buffer(char buffer[], int *buff_ind);
+
 /**
- * _printf - printf function
- * @format: Format string
- * @...: Additional arguments
- * Return: Number of characters printed
+ * _printf - Printf function
+ * @format: format.
+ * Return: Printed chars number  or 0.
  */
 int _printf(const char *format, ...)
 {
-	int i, c, count = 0;
-	va_list valist;
-	char *s;
-	unsigned int num;
+	int i, printed = 0, printed_chars = 0;
+	int flags, width, precision, size, buff_ind = 0;
+	va_list list;
+	char buffer[BUFF_SIZE];
 
-	va_start(valist, format);
-	if (!format)
-	{
+	if (format == NULL)
 		return (-1);
-	}
-	for (i = 0; format[i]; i++)
+
+	va_start(list, format);
+
+	for (i = 0; format && format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
-			_putchar(format[i]);
-			count++;
+			buffer[buff_ind++] = format[i];
+			if (buff_ind == BUFF_SIZE)
+				print_buffer(buffer, &buff_ind);
+			printed_chars++;
 		}
-		else if (format[i + 1])
+		else
 		{
-			i++;
-			if (format[i] == 'c')
-			{
-				c = va_arg(valist, int);
-				_putchar(c);
-				count++;
-			}
-				else if (format[i] == 's')
-				{
-					s = va_arg(valist, char *);
-					if (!s)
-						s = "(null)";
-					count += _printstring(s);
-				}
-				else if (format[i] == 'S')
-				{
-					s = va_arg(valist, char *);
-					if (!s)
-						s = "(null)";
-					count += print_S(s);
-				}
-				else if (format[i] == 'd' || format[i] == 'i')
-				{
-					num = va_arg(valist, int);
-					count += print_number(num);
-				}
-				else if (format[i] == '%')
-				{
-					_putchar('%');
-					count++;
-				}
-				else if (format[i] == 'b')
-				{
-					num = va_arg(valist, unsigned int);
-					count += print_bi(num);
-				}
-				else if (format[i] == 'u')
-				{
-					num = va_arg(valist, unsigned int);
-					count += print_unsig(num);
-				}
-				else if (format[i] == 'o')
-				{
-					num = va_arg(valist, unsigned int);
-					count += print_octal(num);
-				}
-				else if (format[i] == 'x')
-				{
-					num = va_arg(valist, unsigned int);
-					count += print_hexalow(num);
-				}
-				else if (format[i] == 'X')
-				{
-					num = va_arg(valist, unsigned int);
-					count += print_hexaup(num);
-				}
-				else if (format[i] == 'r')
-				{
-					_putchar('%');
-					_putchar('r');
-					count += 2;
-				}
-				else if (format[i] == 'S')
-				{
-					s = va_arg(valist, char *);
-					if (!s)
-						s = "(null)";
-					count += print_S(s);
-				}
-				else if (format[i] == 'p')
-				{
-					count += print_pointer(valist);
-				}
-				else
-				{
-					_putchar('%');
-					return (-1);
-				}
-			}
-			else
-			{
-				_putchar('%');
+			print_buffer(buffer, &buff_ind);
+			flags = get_flags(format, &i);
+			width = get_width(format, &i, list);
+			precision = get_precision(format, &i, list);
+			size = get_size(format, &i);
+			++i;
+			printed = handle_print(format, &i, list, buffer,
+				flags, width, precision, size);
+			if (printed == -1)
 				return (-1);
-			}
+			printed_chars += printed;
 		}
-		va_end(valist);
-		return (count);
+	}
+
+	print_buffer(buffer, &buff_ind);
+
+	va_end(list);
+
+	return (printed_chars);
+}
+
+/**
+ * print_buffer - Prints the contents of the buffer.
+ * @buffer: Array of character
+ * @buff_ind: Index at which to add next characters, represents the length.
+ */
+void print_buffer(char buffer[], int *buff_ind)
+{
+	if (*buff_ind > 0)
+		write(1, &buffer[0], *buff_ind);
+
+	*buff_ind = 0;
 }
