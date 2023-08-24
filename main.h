@@ -7,7 +7,6 @@
 #include <stddef.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdint.h>
 
 int _putchar(char c);
 int print_number(int n);

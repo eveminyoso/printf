@@ -1,8 +1,7 @@
 #include "main.h"
 /**
  * print_pointer - Handle the %p conversion specifier
- * @l: va_list arguments from _printf
- * @f: pointer to the struct flags that determines
+ * @valist: arguments
  *     if a flag is passed to _printf
  * Return: Number of characters printed
  */

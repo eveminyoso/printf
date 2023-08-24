@@ -28,7 +28,6 @@ int print_hl(unsigned int n)
 	n = n / 16;
 	i++;
 	}
-
 	for (j = i - 1; j >= 0; j--, count++)
 	{
 		_putchar(hexadecimalNumber[j]);
