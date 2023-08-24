@@ -22,6 +22,7 @@ int rot13(char *point);
 int print_rev(char *s);
 int print_hl(unsigned int n);
 int print_S(char *s);
+int print_pointer(va_list valist);
 int main(void);
 
 

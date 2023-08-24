@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 			{
 				s = va_arg(valist, char *);
 				if (!s)
-					s = "(null)";
+				       s = "(null)";
 				count += _printstring(s);
 			}
 			else if (format[i] == 'S')
@@ -95,6 +95,10 @@ int _printf(const char *format, ...)
 				if (!s)
 					s = "(null)";
 				count += print_S(s);
+			}
+			else if (format[i] == 'p')
+			{
+				count += print_pointer(valist);
 			}
 			else
 			{
