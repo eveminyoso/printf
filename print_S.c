@@ -13,7 +13,8 @@ int print_S(char *s)
 	{
 		if (s[i] < 32 || s[i] >= 127)
 		{
-			count += puts("\\x");
+			count += _putchar('\\');
+			count += _putchar('x');
 			count += _putchar("0123456789ABCDEF"[s[i] >> 4]);
 			count += _putchar("0123456789ABCDEF"[s[i] & 0x0F]);
 		}
