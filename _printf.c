@@ -100,15 +100,19 @@ int _printf(const char *format, ...)
 			{
 				count += print_pointer(valist);
 			}
-			else
+			else if (format[i] == 'v')
 			{
 				_putchar('%');
+				_putchar('v');
+				count += 2;
+			}
+			else
+			{
 				return (-1);
 			}
 		}
 		else
 		{
-			_putchar('%');
 			return (-1);
 		}
 	}
